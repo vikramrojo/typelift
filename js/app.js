@@ -1,6 +1,6 @@
 window.onload = function() {
 
-  var base,
+  var base=1,
   val = [],
   ratio,
   line=1.35,
@@ -23,11 +23,60 @@ window.onload = function() {
     }
   });
 
+  absurd.di.register('baseSans', function (){
+    var bss = absurd.component("", {
+      css: {
+        'body,p,h1,h2,h3,h4,h5': {
+          ff: 'PT Sans',
+        }
+      },
+      constructor: function(name) {
+        this.set('parent', this.qs('body')).populate();
+      }
+    });
+    bss();
+  });
+
+  absurd.di.register('baseSerif', function (){
+    var bs = absurd.component("", {
+      css: {
+        'body,p,h1,h2,h3,h4,h5': {
+          ff: 'Vollkorn',
+        }
+      },
+      constructor: function(name) {
+        this.set('parent', this.qs('body')).populate();
+      }
+    });
+    bs();
+  });
+
+  absurd.di.register('baseFont', function (){
+    var bf = absurd.component("", {
+      css: {
+        body: {
+          fz: base*16 + 'px',
+          lh: line + 'em'
+        },
+        p: {
+          fz: val[0] + 'em',
+          mt: line + 'em',
+          lh: line + 'em',
+          mb: line + 'em'
+        },
+      },
+      constructor: function(name) {
+        this.set('parent', this.qs('body')).populate();
+      }
+    });
+    bf();
+  });
+
   absurd.di.register('modularCss', function (){
     var ms = absurd.component("", {
       css: {
         body: {
-          fz: base + 'px',
+          fz: base*16 + 'px',
           lh: line + 'em'
         },
         h1: {
@@ -54,10 +103,19 @@ window.onload = function() {
           lh: line + 'em',
           mb: line + 'em'
         },
+        // 'p.drop:first-letter': {
+        //   float: 'left',
+        //   fz: val[3] + 'em',
+        //   mt: line/val[3] + 'em',
+        //   lh: line/val[3] + 'em',
+        //   mb: line/val[3] + 'em',
+        //   pr: line/val[3]/2 + 'em',
+        //   pl: line/val[3]/2 + 'em'
+        // },
         '.pure-g > div':{
           '-mw-bxz': 'bb'
         },
-        '.pure-u-1': {
+        '.pure-g > .pure-u-1': {
           padding: line*padding + 'em'
         }
       },
@@ -70,16 +128,45 @@ window.onload = function() {
 
   absurd.component("msButton", {
     html: '.controller',
+    populated: function(modularCss) {
+      modularCss();
+    },
+    buttonSans: function(baseSans) {
+      baseSans();
+    },
+    buttonSerif: function(baseSerif) {
+      baseSerif();
+    },
+    buttonFont15: function(baseFont) {
+      base=0.9375;
+      baseFont();
+    },
+    buttonFont16: function(baseFont) {
+      base=1;
+      baseFont();
+    },
+    buttonFont17: function(baseFont) {
+      base=1.0625;
+      baseFont();
+    },
+    buttonFont18: function(baseFont) {
+      base=1.125;
+      baseFont();
+    },
+    buttonFont19: function(baseFont) {
+      base=1.1875;
+      baseFont();
+    },
     buttonGolden: function(modularScale, modularCss) {
-      modularScale(1,5,1.618);
+      modularScale(base,5,1.618);
       modularCss();
     },
     buttonFourth: function(modularScale, modularCss) {
-      modularScale(1,5,1.33333);
+      modularScale(base,5,1.33333);
       modularCss();
     },
     buttonFifth: function(modularScale, modularCss) {
-      modularScale(1,5,1.5);
+      modularScale(base,5,1.5);
       modularCss();
     },
     buttonLineSmall: function(modularCss) {
