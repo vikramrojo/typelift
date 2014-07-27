@@ -4,15 +4,40 @@ window.onload = function() {
   val = [],
   ratio,
   line=1.35,
-  padding=1;
+  padding=1,
+  wplRead = document.getElementById('wplRead'),
+  wplAvg,
+  wplWords = 1;
 
-  // function modularScale (msBase, msValue, msRatio) {
-  //   for ( var x=0; x<msValue; x++) {
-  //     val[x] = '' + Math.pow(msRatio,x)*msBase; + 'px'
-  //   }
-  // };
+  // Add a span to ever word for Characters Per Line Measure
+  wplRead.innerHTML = wplRead.innerHTML.replace(/[^\s]+/g, function(match) {
+      return('<span id="wpl' + wplWords++ + '">' + match + '</span>');
+  });
 
-  // modularScale (1, 5, ratio);
+  function wordsPerLine(){
+    var wplLine = [],
+    wplCounter=1,
+    wplLines=0;
+
+    for (i=1; i<wplWords-1; i++){
+      var wplCurrent = document.getElementById('wpl'+i),
+      wplNext = document.getElementById('wpl'+(i+1));
+
+      wplCounter++;
+
+      if (wplCurrent.offsetTop != wplNext.offsetTop){
+        wplLine[wplLines] = wplCounter;
+        wplLines++;
+        console.log(wplLines);
+        wplCounter = 0;
+      };
+    };
+
+    for (i=0; i<wplLine.length; i++){
+      wplCounter += wplLine[i];
+    };
+    wplAvg = wplCounter/wplLine.length;
+  }
 
   var absurd = Absurd();
 
@@ -70,6 +95,8 @@ window.onload = function() {
       }
     });
     bf();
+    wordsPerLine();
+    console.log(wplAvg);
   });
 
   absurd.di.register('modularCss', function (){
@@ -124,12 +151,14 @@ window.onload = function() {
       }
     });
     ms();
+    wordsPerLine();
+    console.log(wplAvg);
   });
 
   absurd.component("msButton", {
     html: '.controller',
     populated: function(modularCss) {
-      modularCss();
+    modularCss();
     },
     buttonSans: function(baseSans) {
       baseSans();
@@ -186,11 +215,11 @@ window.onload = function() {
       modularCss();
     },
     buttonPaddingSmall: function(modularCss) {
-      padding=1;
+      padding=3;
       modularCss();
     },
     buttonPaddingLarge: function(modularCss) {
-      padding=2;
+      padding=6;
       modularCss();
     },
     constructor: function() {
