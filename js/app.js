@@ -38,7 +38,7 @@ window.onload = function() {
       wplCounter += wplLine[i];
     };
     wplAvg = wplCounter/wplLine.length;
-    document.getElementById('adjWordsPerLineVal').innerHTML = Math.round(wplAvg);
+    document.getElementById('adjWordsPerLineVal').innerHTML = (wplAvg).toFixed(2);
   }
 
   window.onresize = function(event) {
@@ -111,7 +111,7 @@ window.onload = function() {
 
   absurd.di.register('cssExport', function(){
     var cssExport = document.getElementById('cssExport');
-    cssExport.innerHTML = 'body:{font-size: '+ base*16 + 'px;}<br>';
+    cssExport.innerHTML = 'body{font-size: '+ base*16 + 'px;}<br>';
     var cssP='p {font-size: '+ '1em;<br> line-height: ' + line + 'em;<br> margin: ' + line + 'em;}<br>';
     cssExport.innerHTML += cssP;
     var cssH1='h1 {font-size: '+ (val[4]/1).toFixed(3) + 'em;<br> line-height: ' + (line/val[4]*3).toFixed(3) + 'em;<br> margin: ' + (line/val[4]*3).toFixed(3) + 'em 0em;}<br>';
