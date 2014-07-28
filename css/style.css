@@ -15,6 +15,9 @@ body{
   /*background: #FFDF7C;*/
 }
 
+.alert {
+  font-weight:700;
+}
 
 hr{
   border:none;
