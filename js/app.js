@@ -94,7 +94,7 @@ window.onload = function() {
           fz: base*16 + 'px',
           lh: line + 'em',
           p: {
-            fz: 1 + 'em',
+            fz: base + 'em',
             mt: line + 'em',
             lh: line + 'em',
             mb: line + 'em'
@@ -149,6 +149,12 @@ window.onload = function() {
             mt: line/2 + 'em',
             lh: line + 'em',
             mb: line/2 + 'em'
+          },
+          p: {
+            fz: base + 'em',
+            mt: line + 'em',
+            lh: line + 'em',
+            mb: line + 'em'
           },
           'p.drop:first-letter': {
             float: 'left',
