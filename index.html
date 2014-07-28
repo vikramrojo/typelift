@@ -35,48 +35,52 @@
 
 <body>
 
-<div class="pure-g">
+<div class="container pure-g">
 
-  <div class="pure-u-1 pure-u-md-3-4 content">
+  <div class="main pure-u-1 pure-u-md-3-4">
+    <div class="content">
     <h2>Chapter 1</h2>
     <h1>Think on These Things</h1>
     <h3>This Matter of Culture</h3>
     <h4>Taken from Jiddu Krishnamuri talks from 1962</h4>
-    <p class="drop readAloud" id="wplRead">I wonder if we have ever asked ourselves what education means. Why do we go to school, why do we learn various subjects, why do we pass examinations and compete with each other for better grades? What does this so-called education mean, and what is it all about?</span> This is really a very important question, not only for the students, but also for the parents, for the teachers, and for everyone who loves this earth. Why do we go through the struggle to be educated? Is it merely in order to pass some examinations and get a job? Or is it the function of education to prepare us while we are young to understand the whole process of life? Having a job and earning one's livelihood is necessary - but is that all? Are we being educated only for that? Surely, life is not merely a job, an occupation; life is something extraordinarily wide and profound, it is a great mystery, a vast realm in which we function as human beings. If we merely prepare ourselves to earn a livelihood, we shall miss the whole point of life; and to understand life is much more important than merely to prepare for examinations and become very proficient in mathematics, physics, or what you will.</p>
+    <p class="drop" id="wplRead">I wonder if we have ever asked ourselves what education means. Why do we go to school, why do we learn various subjects, why do we pass examinations and compete with each other for better grades? What does this so-called education mean, and what is it all about?</span> This is really a very important question, not only for the students, but also for the parents, for the teachers, and for everyone who loves this earth. Why do we go through the struggle to be educated? Is it merely in order to pass some examinations and get a job? Or is it the function of education to prepare us while we are young to understand the whole process of life? Having a job and earning one's livelihood is necessary - but is that all? Are we being educated only for that? Surely, life is not merely a job, an occupation; life is something extraordinarily wide and profound, it is a great mystery, a vast realm in which we function as human beings. If we merely prepare ourselves to earn a livelihood, we shall miss the whole point of life; and to understand life is much more important than merely to prepare for examinations and become very proficient in mathematics, physics, or what you will.</p>
     <img class="pure-img" src="img/unlearning.jpg">
     <h5 class="caption">Krishnamurti on a motorbike behind Arya Vihara in the 1920’s</h5>
     <p>So, whether we are teachers or students, is it not important to ask ourselves why we are educating or being educated? And what does life mean? Is not life an extraordinary thing? The birds, the flowers, the flourishing trees, the heavens, the stars, the rivers and the fish therein - all this is life. Life is the poor and the rich; life is the constant battle between groups, races and nations; life is meditation; life is what we call religion, and it is also the subtle, hidden things of the mind - the envies, the ambitions, the passions, the fears, fulfilments and anxieties. All this and much more is life. But we generally prepare ourselves to understand only one small corner of it. We pass certain examinations, find a job, get married, have children, and then become more and more like machines. We remain fearful, anxious, frightened of life. So, is it the function of education to help us understand the whole process of life, or is it merely to prepare us for a vocation, for the best job we can get?</p>
+    </div>
   </div>
-  <div class="pure-u-1 pure-u-md-1-4 adj">
+  <div class="adj pure-u-1 pure-u-md-1-4">
     <h1>Typelift</h2>
     <h3>A typographer's sandbox</h3>
-    <p>Explore typefaces, vertical rhythms & scales that best showcase your font.<br/>
-      <a href="https://twitter.com/recordfamous">@recordfamous</a>
-    </p>
+    <p>Use the panel below to explore <br/>a font's size, line-height & scale<br/>until you find a combination you like.<br/></p>
     <hr>
     <h3>Words per line: <span id="adjWordsPerLineVal"></span></h3>
     <hr>
     <h3>Font Size: <span id="adjFontFaceVal">16</span></h3>
 
-    <input type="range" id="adjFontFace" min="10" max="22" data-absurd-event="click:rangeFontSize"></input>
-<hr>
-    <h3>Line Height: <span id="adjLineHeightVal">1.35</span>em</h3>
+    <input type="range" id="adjFontFace" min="10" max="22" value="16" data-absurd-event="click:rangeFontSize"></input>
+    <hr>
+    <h3>Line Height: <span id="adjLineHeightVal">1.35</span>x</h3>
 
     <input type="range" id="adjLineHeight" min="1.2" max="3" step="0.05" value="1.35" data-absurd-event="click:rangeLineHeight"></input>
-<hr>
+    <hr>
     <h3>Modular Scale</h4>
     <p>
+      <!-- <button class="pure-button pure-button-primary" data-absurd-event="click:buttonSecond">8:9</button> -->
+      <button class="pure-button pure-button-primary" data-absurd-event="click:buttonThird">4:5</button>
       <button class="pure-button pure-button-primary" data-absurd-event="click:buttonFourth">3:4</button>
       <button class="pure-button pure-button-primary" data-absurd-event="click:buttonFifth">2:3</button>
       <button class="pure-button pure-button-primary" data-absurd-event="click:buttonGolden">1:1.62</button>
     </p>
 <hr>
-    
+
     <h3>Font Type</h3>
     <p>
       <button class="pure-button pure-button-primary" data-absurd-event="click:buttonSans">Sans</button>
     <button class="pure-button pure-button-primary" data-absurd-event="click:buttonSerif">Serif</button>
     </p>
+    <hr>
+    <button class="pure-button pure-button-disabled">Export CSS</button>
   </div>
 </div>
 

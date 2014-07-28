@@ -2,7 +2,7 @@ window.onload = function() {
 
   var base=1,
   val = [],
-  ratio,
+  ratio = 1.333,
   line=1.35,
   padding=1,
   wplRead = document.getElementById('wplRead'),
@@ -116,7 +116,7 @@ window.onload = function() {
           h1: {
             fz: val[4] + 'em',
             mt: line/val[4] + 'em',
-            lh: line/val[4]*4 + 'em',
+            lh: line/val[4]*3 + 'em',
             mb: line/val[4] + 'em'
           },
           h2: {
@@ -136,16 +136,16 @@ window.onload = function() {
             mt: line + 'em',
             lh: line + 'em',
             mb: line + 'em'
+          },
+          'p.drop:first-letter': {
+            float: 'left',
+            fz: val[3] + 'em',
+            mt: line/val[3] + 'em',
+            lh: line/val[3] + 'em',
+            mb: line/val[3]/2 + 'em',
+            pr: line/val[3]/2 + 'em',
+            pl: line/val[3]/2 + 'em'
           }
-        // 'p.drop:first-letter': {
-        //   float: 'left',
-        //   fz: val[3] + 'em',
-        //   mt: line/val[3] + 'em',
-        //   lh: line/val[3] + 'em',
-        //   mb: line/val[3] + 'em',
-        //   pr: line/val[3]/2 + 'em',
-        //   pl: line/val[3]/2 + 'em'
-        // },
         }
       },
       constructor: function(name) {
@@ -158,9 +158,10 @@ window.onload = function() {
 
   absurd.component("typeAdj", {
     html: '.adj',
-    populated: function(modularCss, baseFont) {
-    modularCss();
+    populated: function(modularScale, modularCss, baseFont) {
     baseFont();
+    modularScale(base,5,1.25);
+    modularCss();
     },
     rangeFontSize: function(baseFont) {
       var adjFontFace = document.getElementById('adjFontFace').value;
@@ -191,14 +192,10 @@ window.onload = function() {
       modularScale(base,5,1.5);
       modularCss();
     },
-    // buttonPaddingSmall: function(modularCss) {
-    //   padding=2;
-    //   modularCss();
-    // },
-    // buttonPaddingLarge: function(modularCss) {
-    //   padding=4;
-    //   modularCss();
-    // },
+    buttonThird: function(modularScale, modularCss) {
+      modularScale(base,5,1.25);
+      modularCss();
+    },
     constructor: function() {
         this.populate();
     }
