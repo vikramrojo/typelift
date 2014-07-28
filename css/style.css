@@ -3,17 +3,22 @@ body,p,h1,h2,h3,h4,h5 {
   font-family: 'PT Sans', sans-serif;
 }
 
+body{
+  /*background: #FFDF7C;*/
+}
+
 .container {
   max-width:1366px;
   margin: 0 auto;
   border:10px solid #0078e7;
+  /*background: #FFDF7C;*/
 }
 
 
 hr{
   border:none;
   height:1px;
-  border-top: 1px solid #FFDF7C;
+  border-top: 1px solid #0078e7;
 }
 .adj {
   box-sizing: border-box;
@@ -23,7 +28,7 @@ hr{
   background: #75ECD7;
 }
 
-.adj h1{
+.adj h1, .adj a, .adj a:visited{
   color:#EB705E;
 }
 
@@ -42,8 +47,8 @@ hr{
 }
 
 
-.adj .pure-button {margin-right:5px;}
-.adj .pure-button-disabled {background-color:#ccc; margin-top: 1em;}
+.adj .pure-button {margin-right:5px; margin-bottom:5px;}
+/*.adj .pure-button-disabled {background-color:#ccc; margin-top: 1em;}*/
 .measure {position:relative;}
 
 #adjFontFace, #adjLineHeight {
