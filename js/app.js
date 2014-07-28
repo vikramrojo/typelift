@@ -14,6 +14,7 @@ window.onload = function() {
       return('<span id="wpl' + wplWords++ + '">' + match + '</span>');
   });
 
+
   function wordsPerLine(){
     var wplLine = [],
     wplCounter=1,
@@ -23,36 +24,44 @@ window.onload = function() {
       var wplCurrent = document.getElementById('wpl'+i),
       wplNext = document.getElementById('wpl'+(i+1));
 
-      wplCounter++;
 
       if (wplCurrent.offsetTop != wplNext.offsetTop){
         wplLine[wplLines] = wplCounter;
         wplLines++;
-        console.log(wplLines);
         wplCounter = 0;
       };
+      wplCounter++;
+
     };
 
     for (i=0; i<wplLine.length; i++){
+      console.log(wplLine[i]);
       wplCounter += wplLine[i];
     };
     wplAvg = wplCounter/wplLine.length;
+    document.getElementById('adjWordsPerLineVal').innerHTML = Math.round(wplAvg);
   }
+
+  window.onresize = function(event) {
+    wordsPerLine();
+
+  };
 
   var absurd = Absurd();
 
   absurd.di.register('modularScale', function (msBase, msValue, msRatio){
     for ( var x=0; x<msValue; x++) {
         val[x] = '' + Math.pow(msRatio,x)*msBase; + 'px'
-        console.log(val[x]);
     }
   });
 
   absurd.di.register('baseSans', function (){
     var bss = absurd.component("", {
       css: {
-        'body,p,h1,h2,h3,h4,h5': {
-          ff: 'PT Sans',
+        '.content': {
+          'p,h1,h2,h3,h4,h5': {
+            ff: 'PT Sans',
+          }
         }
       },
       constructor: function(name) {
@@ -65,8 +74,10 @@ window.onload = function() {
   absurd.di.register('baseSerif', function (){
     var bs = absurd.component("", {
       css: {
-        'body,p,h1,h2,h3,h4,h5': {
-          ff: 'Vollkorn',
+        '.content': {
+          'p,h1,h2,h3,h4,h5': {
+            ff: 'Vollkorn',
+          }
         }
       },
       constructor: function(name) {
@@ -79,16 +90,16 @@ window.onload = function() {
   absurd.di.register('baseFont', function (){
     var bf = absurd.component("", {
       css: {
-        body: {
+        '.content': {
           fz: base*16 + 'px',
-          lh: line + 'em'
-        },
-        p: {
-          fz: val[0] + 'em',
-          mt: line + 'em',
           lh: line + 'em',
-          mb: line + 'em'
-        },
+          p: {
+            fz: val[0] + 'em',
+            mt: line + 'em',
+            lh: line + 'em',
+            mb: line + 'em'
+          },
+        }
       },
       constructor: function(name) {
         this.set('parent', this.qs('body')).populate();
@@ -96,40 +107,36 @@ window.onload = function() {
     });
     bf();
     wordsPerLine();
-    console.log(wplAvg);
   });
 
   absurd.di.register('modularCss', function (){
     var ms = absurd.component("", {
       css: {
-        body: {
-          fz: base*16 + 'px',
-          lh: line + 'em'
-        },
-        h1: {
-          fz: val[4] + 'em',
-          mt: line/val[4] + 'em',
-          lh: line/val[4]*4 + 'em',
-          mb: line/val[4] + 'em'
-        },
-        h2: {
-          fz: val[3] + 'em',
-          mt: line/val[3] + 'em',
-          lh: line/val[3]*1.5 + 'em',
-          mb: line/val[3] + 'em'
-        },
-        h3: {
-          fz: val[2] + 'em',
-          mt: line/val[2] + 'em',
-          lh: line/val[2]*1.5 + 'em',
-          mb: line/val[2] + 'em'
-        },
-        p: {
-          fz: val[0] + 'em',
-          mt: line + 'em',
-          lh: line + 'em',
-          mb: line + 'em'
-        },
+        '.content': {
+          h1: {
+            fz: val[4] + 'em',
+            mt: line/val[4] + 'em',
+            lh: line/val[4]*4 + 'em',
+            mb: line/val[4] + 'em'
+          },
+          h2: {
+            fz: val[3] + 'em',
+            mt: line/val[3] + 'em',
+            lh: line/val[3]*1.5 + 'em',
+            mb: line/val[3] + 'em'
+          },
+          h3: {
+            fz: val[2] + 'em',
+            mt: line/val[2] + 'em',
+            lh: line/val[2]*1.5 + 'em',
+            mb: line/val[2] + 'em'
+          },
+          p: {
+            fz: val[0] + 'em',
+            mt: line + 'em',
+            lh: line + 'em',
+            mb: line + 'em'
+          }
         // 'p.drop:first-letter': {
         //   float: 'left',
         //   fz: val[3] + 'em',
@@ -139,11 +146,6 @@ window.onload = function() {
         //   pr: line/val[3]/2 + 'em',
         //   pl: line/val[3]/2 + 'em'
         // },
-        '.pure-g > div':{
-          '-mw-bxz': 'bb'
-        },
-        '.pure-g > .pure-u-1': {
-          padding: line*padding + 'em'
         }
       },
       constructor: function(name) {
@@ -151,40 +153,31 @@ window.onload = function() {
       }
     });
     ms();
-    wordsPerLine();
-    console.log(wplAvg);
+    // console.log(wplAvg);
   });
 
-  absurd.component("msButton", {
-    html: '.controller',
-    populated: function(modularCss) {
+  absurd.component("typeAdj", {
+    html: '.adj',
+    populated: function(modularCss, baseFont) {
     modularCss();
+    baseFont();
+    },
+    rangeFontSize: function(baseFont) {
+      var adjFontFace = document.getElementById('adjFontFace').value;
+      document.getElementById('adjFontFaceVal').innerHTML = adjFontFace;
+      base=adjFontFace/16;
+      baseFont();
+    },
+    rangeLineHeight: function(modularCss) {
+      line = document.getElementById('adjLineHeight').value;
+      document.getElementById('adjLineHeightVal').innerHTML = line;
+      modularCss();
     },
     buttonSans: function(baseSans) {
       baseSans();
     },
     buttonSerif: function(baseSerif) {
       baseSerif();
-    },
-    buttonFont15: function(baseFont) {
-      base=0.9375;
-      baseFont();
-    },
-    buttonFont16: function(baseFont) {
-      base=1;
-      baseFont();
-    },
-    buttonFont17: function(baseFont) {
-      base=1.0625;
-      baseFont();
-    },
-    buttonFont18: function(baseFont) {
-      base=1.125;
-      baseFont();
-    },
-    buttonFont19: function(baseFont) {
-      base=1.1875;
-      baseFont();
     },
     buttonGolden: function(modularScale, modularCss) {
       modularScale(base,5,1.618);
@@ -198,30 +191,14 @@ window.onload = function() {
       modularScale(base,5,1.5);
       modularCss();
     },
-    buttonLineSmall: function(modularCss) {
-      line=1.35;
-      modularCss();
-    },
-    buttonLineMedium: function(modularCss) {
-      line=1.5;
-      modularCss();
-    },
-    buttonLineLarge: function(modularCss) {
-      line=1.65;
-      modularCss();
-    },
-    buttonLineXLarge: function(modularCss) {
-      line=2;
-      modularCss();
-    },
-    buttonPaddingSmall: function(modularCss) {
-      padding=3;
-      modularCss();
-    },
-    buttonPaddingLarge: function(modularCss) {
-      padding=6;
-      modularCss();
-    },
+    // buttonPaddingSmall: function(modularCss) {
+    //   padding=2;
+    //   modularCss();
+    // },
+    // buttonPaddingLarge: function(modularCss) {
+    //   padding=4;
+    //   modularCss();
+    // },
     constructor: function() {
         this.populate();
     }

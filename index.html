@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Typeproto: A typographers sandbox</title>
+  <title>Typelift: A typographers sandbox</title>
 
   <!-- <link rel="stylesheet" href="css/base-min.css">
   <script src="js/ui.js"></script>
@@ -47,49 +47,35 @@
     <h5 class="caption">Krishnamurti on a motorbike behind Arya Vihara in the 1920’s</h5>
     <p>So, whether we are teachers or students, is it not important to ask ourselves why we are educating or being educated? And what does life mean? Is not life an extraordinary thing? The birds, the flowers, the flourishing trees, the heavens, the stars, the rivers and the fish therein - all this is life. Life is the poor and the rich; life is the constant battle between groups, races and nations; life is meditation; life is what we call religion, and it is also the subtle, hidden things of the mind - the envies, the ambitions, the passions, the fears, fulfilments and anxieties. All this and much more is life. But we generally prepare ourselves to understand only one small corner of it. We pass certain examinations, find a job, get married, have children, and then become more and more like machines. We remain fearful, anxious, frightened of life. So, is it the function of education to help us understand the whole process of life, or is it merely to prepare us for a vocation, for the best job we can get?</p>
   </div>
-  <div class="pure-u-1 pure-u-md-1-4 controller">
-    <h2>Typeproto</h2>
+  <div class="pure-u-1 pure-u-md-1-4 adj">
+    <h1>Typelift</h2>
     <h3>A typographer's sandbox</h3>
     <p>Explore typefaces, vertical rhythms & scales that best showcase your font.<br/>
-      @Recordfamous
+      <a href="https://twitter.com/recordfamous">@recordfamous</a>
     </p>
+    <hr>
+    <h3>Words per line: <span id="adjWordsPerLineVal"></span></h3>
+    <hr>
+    <h3>Font Size: <span id="adjFontFaceVal">16</span></h3>
 
-    <hr>
-    <h3>Font Type</h3>
-    <p>
-      <button class="pure-button pure-button-primary" data-absurd-event="click:buttonSans">Sans</button>
-    <button class="pure-button pure-button-primary" data-absurd-event="click:buttonSerif">Serif</button>
-    </p>
-    <hr>
-    <h3>Base Font (px)</h3>
-    <p>
-      <button class="pure-button pure-button-primary" data-absurd-event="click:buttonFont15">15</button>
-      <button class="pure-button pure-button-primary" data-absurd-event="click:buttonFont16">16</button>
-      <button class="pure-button pure-button-primary" data-absurd-event="click:buttonFont17">17</button>
-      <button class="pure-button pure-button-primary" data-absurd-event="click:buttonFont18">18</button>
-      <button class="pure-button pure-button-primary" data-absurd-event="click:buttonFont19">19</button>
-    </p>
-    <hr>
+    <input type="range" id="adjFontFace" min="10" max="22" data-absurd-event="click:rangeFontSize"></input>
+<hr>
+    <h3>Line Height: <span id="adjLineHeightVal">1.35</span>em</h3>
 
+    <input type="range" id="adjLineHeight" min="1.2" max="3" step="0.05" value="1.35" data-absurd-event="click:rangeLineHeight"></input>
+<hr>
     <h3>Modular Scale</h4>
     <p>
       <button class="pure-button pure-button-primary" data-absurd-event="click:buttonFourth">3:4</button>
       <button class="pure-button pure-button-primary" data-absurd-event="click:buttonFifth">2:3</button>
       <button class="pure-button pure-button-primary" data-absurd-event="click:buttonGolden">1:1.62</button>
     </p>
-    <hr>
-    <h3>Line Height</h4>
+<hr>
+    
+    <h3>Font Type</h3>
     <p>
-      <button class="pure-button pure-button-primary" data-absurd-event="click:buttonLineSmall">SM</button>
-      <button class="pure-button pure-button-primary" data-absurd-event="click:buttonLineMedium">MD</button>
-      <button class="pure-button pure-button-primary" data-absurd-event="click:buttonLineLarge">LG</button>
-      <button class="pure-button pure-button-primary" data-absurd-event="click:buttonLineXLarge">XL</button>
-    </p>
-    <hr>
-    <h3>Column Padding</h3>
-    <p>
-      <button class="pure-button pure-button-primary" data-absurd-event="click:buttonPaddingSmall">SM</button>
-      <button class="pure-button pure-button-primary" data-absurd-event="click:buttonPaddingLarge">LG</button>
+      <button class="pure-button pure-button-primary" data-absurd-event="click:buttonSans">Sans</button>
+    <button class="pure-button pure-button-primary" data-absurd-event="click:buttonSerif">Serif</button>
     </p>
   </div>
 </div>

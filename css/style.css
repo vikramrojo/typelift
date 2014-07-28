@@ -2,5 +2,29 @@ body,p,h1,h2,h3,h4,h5 {
   color: #2E4BC1;
 font-family: 'PT Sans', sans-serif;
 }
-.controller .pure-button {margin-right:5px;}
+
+.adj {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 1.35em;
+}
+
+.content {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding-top: 1.35em;
+  padding-bottom: 1.35em;
+  padding-left: 5.4em;
+  padding-right: 5.4em;
+}
+
+
+.adj .pure-button {margin-right:5px;}
 .measure {position:relative;}
+.pure-g {max-width:1366px; margin: 0 auto;}
+
+#adjFontFace, #adjLineHeight {
+  width: 100%;
+}
