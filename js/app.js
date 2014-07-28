@@ -152,7 +152,7 @@ window.onload = function() {
             mb: line/2 + 'em'
           },
           p: {
-            fz: base + 'em',
+            fz: 1 + 'em',
             mt: line + 'em',
             lh: line + 'em',
             mb: line + 'em'
