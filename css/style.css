@@ -54,12 +54,12 @@ hr{
 
 .inset {
   float:right;
-  border-left:2px solid #75ECD7;
+  border-left:1px solid #75ECD7;
 }
 
 .inset h5 {
-  color:#0078e7;
-  font-weight:700;
+  color:#EB705E;
+  font-style: italic;
 }
 
 .adj .pure-button {margin-right:5px; margin-bottom:5px;}

@@ -110,14 +110,24 @@ window.onload = function() {
   });
 
   absurd.di.register('cssExport', function(){
-    var css = document.getElementById('cssExport');
+    var cssExport = document.getElementById('cssExport');
+    cssExport.innerHTML = 'body:{font-size: '+ base*16 + 'px;}<br>';
+    var cssP='p {font-size: '+ '1em;<br> line-height: ' + line + 'em;<br> margin: ' + line + 'em;}<br>';
+    cssExport.innerHTML += cssP;
+    var cssH1='h1 {font-size: '+ (val[4]/1).toFixed(3) + 'em;<br> line-height: ' + (line/val[4]*3).toFixed(3) + 'em;<br> margin: ' + (line/val[4]*3).toFixed(3) + 'em 0em;}<br>';
+    cssExport.innerHTML += cssH1;
+    var cssH2='h2 {font-size: '+ (val[3]/1).toFixed(3) + 'em;<br> line-height: ' + (line/val[3]*1.5).toFixed(3) + 'em;<br> margin: ' + (line/val[3]).toFixed(3) + 'em 0em;}<br>';
+    cssExport.innerHTML += cssH2;
+    var cssH3='h3 {font-size: '+ (val[2]/1).toFixed(3) + 'em;<br> line-height: ' + (line/val[2]).toFixed(3) + 'em;<br> margin: ' + (line/val[2]).toFixed(3) + 'em 0em;}<br>';
+    cssExport.innerHTML += cssH3;
+    var cssH4='h4 {font-size: '+ (val[1]/1).toFixed(3) + 'em;<br> line-height: ' + (line/val[1]).toFixed(3) + 'em;<br> margin: ' + (line/val[1]/2).toFixed(3) + 'em 0em;}<br>';
+    cssExport.innerHTML += cssH4;
+    var cssH5='h5 {font-size: 1em;<br> line-height: ' + line + 'em;<br> margin: ' + (line/2).toFixed(3) + 'em 0em;}<br>';
+    cssExport.innerHTML += cssH5;
   });
 
   absurd.di.register('modularCss', function (){
     var ms = absurd.component("", {
-      // cssExport: function(){
-      //
-      // },
       css: {
         '.content': {
           h1: {
@@ -169,8 +179,12 @@ window.onload = function() {
           },
           '.inset': {
             ml: line + 'em',
+            mt: line*0.5 + 'em',
+            mb: line/val[1]/2 + 'em',
             h5: {
-              ml: line + 'em'
+              ml: line + 'em',
+              mt: 0,
+              mb: 0,
             }
           }
         }
@@ -184,9 +198,10 @@ window.onload = function() {
 
   absurd.component("typeAdj", {
     html: '.adj',
-    populated: function(modularScale, modularCss, baseFont) {
+    populated: function(modularScale, modularCss, baseFont, cssExport) {
     modularScale(base,5,1.25);
     modularCss();
+    cssExport();
     baseFont();
     },
     rangeFontSize: function(baseFont, cssExport) {
@@ -196,10 +211,11 @@ window.onload = function() {
       baseFont();
       cssExport();
     },
-    rangeLineHeight: function(modularCss) {
+    rangeLineHeight: function(modularCss, cssExport) {
       line = document.getElementById('adjLineHeight').value;
       document.getElementById('adjLineHeightVal').innerHTML = line;
       modularCss();
+      cssExport();
     },
     buttonSans: function(baseSans) {
       baseSans();
@@ -207,25 +223,29 @@ window.onload = function() {
     buttonSerif: function(baseSerif) {
       baseSerif();
     },
-    buttonGolden: function(modularScale, modularCss) {
+    buttonGolden: function(modularScale, modularCss, cssExport) {
       ratio=(1+Math.sqrt(5))/2;
       modularScale(base,5,ratio);
       modularCss();
+      cssExport();
     },
-    buttonFourth: function(modularScale, modularCss) {
+    buttonFourth: function(modularScale, modularCss, cssExport) {
       ratio=4/3;
       modularScale(base,5,ratio);
       modularCss();
+      cssExport();
     },
-    buttonFifth: function(modularScale, modularCss) {
+    buttonFifth: function(modularScale, modularCss, cssExport) {
       ratio=3/2;
       modularScale(base,5,ratio);
       modularCss();
+      cssExport();
     },
-    buttonThird: function(modularScale, modularCss) {
+    buttonThird: function(modularScale, modularCss, cssExport) {
       ratio=5/4;
       modularScale(base,5,ratio);
       modularCss();
+      cssExport();
     },
     constructor: function() {
         this.populate();
