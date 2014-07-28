@@ -35,7 +35,6 @@ window.onload = function() {
     };
 
     for (i=0; i<wplLine.length; i++){
-      console.log(wplLine[i]);
       wplCounter += wplLine[i];
     };
     wplAvg = wplCounter/wplLine.length;
@@ -51,7 +50,8 @@ window.onload = function() {
 
   absurd.di.register('modularScale', function (msBase, msValue, msRatio){
     for ( var x=0; x<msValue; x++) {
-        val[x] = '' + Math.pow(msRatio,x)*msBase; + 'px'
+        val[x] = '' + Math.pow(msRatio,x)*msBase; + 'px';
+        console.log(val[x])
     }
   });
 
@@ -94,7 +94,7 @@ window.onload = function() {
           fz: base*16 + 'px',
           lh: line + 'em',
           p: {
-            fz: val[0] + 'em',
+            fz: 1 + 'em',
             mt: line + 'em',
             lh: line + 'em',
             mb: line + 'em'
@@ -109,8 +109,15 @@ window.onload = function() {
     wordsPerLine();
   });
 
+  absurd.di.register('cssExport', function(){
+    var css = document.getElementById('cssExport');
+  });
+
   absurd.di.register('modularCss', function (){
     var ms = absurd.component("", {
+      // cssExport: function(){
+      //
+      // },
       css: {
         '.content': {
           h1: {
@@ -131,11 +138,17 @@ window.onload = function() {
             lh: line/val[2]*1.5 + 'em',
             mb: line/val[2] + 'em'
           },
-          p: {
-            fz: val[0] + 'em',
-            mt: line + 'em',
+          h4: {
+            fz: val[1] + 'em',
+            mt: line/val[1] + 'em',
+            lh: line/val[1] + 'em',
+            mb: line/val[1] + 'em'
+          },
+          h5: {
+            fz: 1 + 'em',
+            mt: line/2 + 'em',
             lh: line + 'em',
-            mb: line + 'em'
+            mb: line/2 + 'em'
           },
           'p.drop:first-letter': {
             float: 'left',
@@ -153,7 +166,6 @@ window.onload = function() {
       }
     });
     ms();
-    // console.log(wplAvg);
   });
 
   absurd.component("typeAdj", {
@@ -163,11 +175,12 @@ window.onload = function() {
     modularCss();
     baseFont();
     },
-    rangeFontSize: function(baseFont) {
+    rangeFontSize: function(baseFont, cssExport) {
       var adjFontFace = document.getElementById('adjFontFace').value;
       document.getElementById('adjFontFaceVal').innerHTML = adjFontFace;
       base=adjFontFace/16;
       baseFont();
+      cssExport();
     },
     rangeLineHeight: function(modularCss) {
       line = document.getElementById('adjLineHeight').value;
@@ -181,19 +194,23 @@ window.onload = function() {
       baseSerif();
     },
     buttonGolden: function(modularScale, modularCss) {
-      modularScale(base,5,1.618);
+      ratio=(1+Math.sqrt(5))/2;
+      modularScale(base,5,ratio);
       modularCss();
     },
     buttonFourth: function(modularScale, modularCss) {
-      modularScale(base,5,1.33333);
+      ratio=4/3;
+      modularScale(base,5,ratio);
       modularCss();
     },
     buttonFifth: function(modularScale, modularCss) {
-      modularScale(base,5,1.5);
+      ratio=3/2;
+      modularScale(base,5,ratio);
       modularCss();
     },
     buttonThird: function(modularScale, modularCss) {
-      modularScale(base,5,1.25);
+      ratio=5/4;
+      modularScale(base,5,ratio);
       modularCss();
     },
     constructor: function() {

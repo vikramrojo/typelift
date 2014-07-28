@@ -1,6 +1,7 @@
 body,p,h1,h2,h3,h4,h5 {
   color: #0078e7;
   font-family: 'PT Sans', sans-serif;
+  font-weight:normal;
 }
 
 body{
@@ -28,8 +29,13 @@ hr{
   background: #75ECD7;
 }
 
-.adj h1, .adj a, .adj a:visited{
+.adj h1{
+  font-weight: 700;
+  text-shadow: 0.07em 0.07em 0 #0078e7;
   color:#EB705E;
+}
+.adj a, .adj a:visited{
+  color:#0078e7;
 }
 
 .main {
