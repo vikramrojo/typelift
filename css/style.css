@@ -13,7 +13,7 @@ body,p,h1,h2,h3,h4,h5 {
 hr{
   border:none;
   height:1px;
-  border-top: 1px dotted #FFDF7C;
+  border-top: 1px solid #FFDF7C;
 }
 .adj {
   box-sizing: border-box;
@@ -22,7 +22,6 @@ hr{
   padding: 1.35em;
   background: #75ECD7;
 }
-
 
 .adj h1{
   color:#EB705E;
@@ -36,6 +35,10 @@ hr{
   padding-bottom: 1.35em;
   padding-left: 5.4em;
   padding-right: 5.4em;
+}
+
+.main *{
+  color: #353535;
 }
 
 
