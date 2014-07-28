@@ -142,7 +142,7 @@ window.onload = function() {
           h4: {
             fz: val[1] + 'em',
             mt: line/val[1]/2 + 'em',
-            lh: line/val[1]/2 + 'em',
+            lh: line/val[1] + 'em',
             mb: line/val[1]/2 + 'em'
           },
           h5: {
@@ -166,6 +166,12 @@ window.onload = function() {
             mb: line/val[3]/2 + 'em',
             pr: line/val[3]/2 + 'em',
             pl: line/val[3]/2 + 'em'
+          },
+          '.inset': {
+            ml: line + 'em',
+            h5: {
+              ml: line + 'em'
+            }
           }
         }
       },
