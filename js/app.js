@@ -94,7 +94,7 @@ window.onload = function() {
           fz: base*16 + 'px',
           lh: line + 'em',
           p: {
-            fz: base + 'em',
+            fz: 1 + 'em',
             mt: line + 'em',
             lh: line + 'em',
             mb: line + 'em'
@@ -130,12 +130,13 @@ window.onload = function() {
             fz: val[3] + 'em',
             mt: line/val[3] + 'em',
             lh: line/val[3]*1.5 + 'em',
-            mb: line/val[3] + 'em'
+            mb: line/val[3] + 'em',
+            fw: 700
           },
           h3: {
             fz: val[2] + 'em',
             mt: line/val[2] + 'em',
-            lh: line/val[2]*1.5 + 'em',
+            lh: line/val[2] + 'em',
             mb: line/val[2] + 'em'
           },
           h4: {
@@ -159,6 +160,7 @@ window.onload = function() {
           'p.drop:first-letter': {
             float: 'left',
             fz: val[3] + 'em',
+            fw: 700,
             mt: line/val[3] + 'em',
             lh: line/val[3] + 'em',
             mb: line/val[3]/2 + 'em',
