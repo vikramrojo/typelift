@@ -159,9 +159,9 @@ window.onload = function() {
   absurd.component("typeAdj", {
     html: '.adj',
     populated: function(modularScale, modularCss, baseFont) {
-    baseFont();
     modularScale(base,5,1.25);
     modularCss();
+    baseFont();
     },
     rangeFontSize: function(baseFont) {
       var adjFontFace = document.getElementById('adjFontFace').value;
