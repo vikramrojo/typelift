@@ -141,9 +141,9 @@ window.onload = function() {
           },
           h4: {
             fz: val[1] + 'em',
-            mt: line/val[1] + 'em',
-            lh: line/val[1] + 'em',
-            mb: line/val[1] + 'em'
+            mt: line/val[1]/2 + 'em',
+            lh: line/val[1]/2 + 'em',
+            mb: line/val[1]/2 + 'em'
           },
           h5: {
             fz: 1 + 'em',
