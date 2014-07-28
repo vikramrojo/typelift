@@ -1,7 +1,11 @@
-body,p,h1,h2,h3,h4,h5 {
+p,h1,h2,h3,h4,h5 {
   color: #0078e7;
   font-family: 'PT Sans', sans-serif;
   font-weight:normal;
+  -webkit-transition: all 0.25s ease-in;
+  -moz-transition: all 0.25s ease-in;
+  -o-transition: all 0.25s ease-in;
+  -ms-transition: all 0.25s ease-in;
 }
 
 body{
